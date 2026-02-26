@@ -321,6 +321,18 @@
     .cat-productivity { background: rgba(196, 133, 74, 0.1); color: var(--orange); }
     .cat-ai { background: rgba(91, 106, 191, 0.1); color: var(--accent); }
 
+    /* Two-column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .two-col .section {
+      margin: 0;
+    }
+
     /* Post cards */
     .post-list {
       display: flex;
@@ -412,6 +424,7 @@
       .stat-value { font-size: 1.4rem; }
       .card-grid { grid-template-columns: 1fr; }
       .philosophy-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -449,15 +462,18 @@
     <div class="section">
       <h2 class="section-title"><span class="emoji">👋</span> About</h2>
       <p class="section-desc">
-        I'm Ritesh Bhatia, an Android engineer based in Toronto with 15 years of experience building mobile applications at scale. I currently work at Slack where I focus on Android development, architecture, and developer tooling. Over my career I've developed a deep love for clean architecture, well-structured codebases, and mentoring engineers to think beyond just shipping code.
+        I'm Ritesh Bhatia, a Senior Android Engineer at Slack based in Toronto with 15 years of experience building mobile applications at scale. I've led teams of Staff and Senior Engineers delivering enterprise-grade features, architected migrations from legacy systems to modern Kotlin/Compose/Circuit patterns, and mentored engineers from intern to senior level. I care deeply about clean architecture, code quality, and building engineering cultures that scale alongside the codebase.
       </p>
       <p class="section-desc">
-        I believe great software comes from the intersection of strong technical foundations and thoughtful leadership. Whether it's designing a modular architecture that scales across teams, championing testing practices that actually catch bugs, or pairing with a junior engineer on their first feature, I find energy in making the people and systems around me better.
+        My approach sits at the intersection of technical excellence and leadership. I've driven cross-platform initiatives, established testing practices that achieved 95% coverage on critical paths, and run architecture reviews, lunch-and-learns, and office hours to share knowledge across teams. I believe in craftsmanship over perfection, knowledge empowerment over control, and ownership without territory.
       </p>
       <p class="section-desc">
-        Over the past year, AI has become a core part of how I work. I've gone from using Claude for simple boilerplate to building custom skills and connecting MCP servers that understand my team's codebase conventions. This site documents that journey: the tools I use, the skills I've built, and the philosophy behind working with AI as a coding partner, not a replacement.
+        Over the past year, AI has become a core part of how I work. I pioneered AI-assisted development practices on our Android team, engineering task-specific Claude agents and skills that align with our coding standards. This site documents that journey: the tools I use, the skills I've built, and the philosophy behind working with AI as a coding partner, not a replacement.
       </p>
     </div>
+
+    <!-- Posts + MCP side by side -->
+    <div class="two-col">
 
     <!-- LinkedIn Posts -->
     <div class="section">
@@ -591,6 +607,8 @@
 
       </div>
     </div>
+
+    </div><!-- end two-col -->
 
     <!-- Skills -->
     <div class="section">
