@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritesh's AI Workflow</title>
+  <meta name="description" content="How Ritesh Bhatia uses AI tools for Android development — MCPs, skills, coding philosophy, and setup.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface-hover: #f5f3f0;
+      --border: #e8e4df;
+      --text: #2d2a26;
+      --text-muted: #7a746b;
+      --accent: #5b6abf;
+      --accent-light: rgba(91, 106, 191, 0.08);
+      --accent-border: rgba(91, 106, 191, 0.25);
+      --green: #4a9e6e;
+      --blue: #5a8ec4;
+      --orange: #c4854a;
+      --pink: #b86a8a;
+      --teal: #4a9e9e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .header .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .header .tagline {
+      display: inline-block;
+      background: var(--accent-light);
+      border: 1px solid var(--accent-border);
+      border-radius: 2rem;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    /* Section */
+    .section {
+      margin: 2.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text);
+    }
+
+    .section-title .emoji {
+      font-size: 1.4rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 2px 12px rgba(91, 106, 191, 0.08);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .card-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .card-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 1rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-left: auto;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .card-tools {
+      margin-top: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tool-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: var(--surface-hover);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    /* Philosophy */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .philosophy-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .philosophy-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .philosophy-item p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+    }
+
+    th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-hover);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td code {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8rem;
+      background: var(--accent-light);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      color: var(--accent);
+    }
+
+    /* Links */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Stats bar */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 1.5rem 0;
+      margin: 1.5rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .footer a {
+      color: var(--text-muted);
+    }
+
+    .footer a:hover {
+      color: var(--accent);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Color accents for MCP cards */
+    .mcp-slack .card-icon { background: rgba(74, 21, 75, 0.08); }
+    .mcp-figma .card-icon { background: rgba(162, 89, 255, 0.08); }
+    .mcp-jira .card-icon { background: rgba(0, 82, 204, 0.08); }
+    .mcp-github .card-icon { background: rgba(45, 42, 38, 0.06); }
+    .mcp-grafana .card-icon { background: rgba(255, 152, 48, 0.1); }
+
+    /* Skill category badges */
+    .skill-category {
+      font-size: 0.65rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      font-weight: 600;
+    }
+    .cat-android { background: rgba(74, 158, 110, 0.1); color: var(--green); }
+    .cat-productivity { background: rgba(196, 133, 74, 0.1); color: var(--orange); }
+    .cat-ai { background: rgba(91, 106, 191, 0.1); color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.8rem; }
+      .stats { gap: 1.5rem; }
+      .stat-value { font-size: 1.4rem; }
+      .card-grid { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>Ritesh's AI Workflow</h1>
+      <p class="subtitle">Android Engineer · AI-Assisted Development · Building at Scale</p>
+      <span class="tagline">🤖 Claude Code + Android = Ship Faster</span>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">MCP Servers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Custom Skills</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1+</div>
+        <div class="stat-label">Year with Claude</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">Daily</div>
+        <div class="stat-label">AI Pair Programming</div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">👋</span> About</h2>
+      <p class="section-desc">
+        I'm Ritesh Bhatia, an Android engineer based in Toronto with 15 years of experience building mobile applications at scale. I currently work at Slack where I focus on Android development, architecture, and developer tooling. Over my career I've developed a deep love for clean architecture, well-structured codebases, and mentoring engineers to think beyond just shipping code.
+      </p>
+      <p class="section-desc">
+        I believe great software comes from the intersection of strong technical foundations and thoughtful leadership. Whether it's designing a modular architecture that scales across teams, championing testing practices that actually catch bugs, or pairing with a junior engineer on their first feature, I find energy in making the people and systems around me better.
+      </p>
+      <p class="section-desc">
+        Over the past year, AI has become a core part of how I work. I've gone from using Claude for simple boilerplate to building custom skills and connecting MCP servers that understand my team's codebase conventions. This site documents that journey: the tools I use, the skills I've built, and the philosophy behind working with AI as a coding partner, not a replacement.
+      </p>
+    </div>
+
+    <!-- MCP Servers -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">🔌</span> MCP Servers</h2>
+      <p class="section-desc">
+        MCP (Model Context Protocol) lets AI tools connect directly to the services I use. Instead of copy-pasting context between apps, my AI assistant can read tickets, pull designs, and query dashboards natively.
+        <a href="https://modelcontextprotocol.io/introduction" target="_blank">Learn more about MCP →</a>
+      </p>
+
+      <div class="card-grid">
+
+        <div class="card mcp-slack">
+          <div class="card-header">
+            <div class="card-icon">💬</div>
+            <span class="card-name">Slack</span>
+            <span class="card-badge">9 tools</span>
+          </div>
+          <p class="card-desc">Read channels, search threads, create canvases, write tech specs and documentation directly in my AI workflow.</p>
+          <div class="card-tools">
+            <span class="tool-tag">read_channel</span>
+            <span class="tool-tag">read_thread</span>
+            <span class="tool-tag">create_canvas</span>
+            <span class="tool-tag">search</span>
+          </div>
+        </div>
+
+        <div class="card mcp-figma">
+          <div class="card-header">
+            <div class="card-icon">🎨</div>
+            <span class="card-name">Figma</span>
+            <span class="card-badge">10 tools</span>
+          </div>
+          <p class="card-desc">Read designs, extract layout data, generate code from components, and map UI components in my codebase to Figma components matching styles and formatting.</p>
+          <div class="card-tools">
+            <span class="tool-tag">get_design_context</span>
+            <span class="tool-tag">get_screenshot</span>
+            <span class="tool-tag">code_connect</span>
+          </div>
+        </div>
+
+        <div class="card mcp-jira">
+          <div class="card-header">
+            <div class="card-icon">📋</div>
+            <span class="card-name">Jira</span>
+            <span class="card-badge">3 tools</span>
+          </div>
+          <p class="card-desc">Search issues with JQL, pull ticket details, understand requirements without switching tabs while coding.</p>
+          <div class="card-tools">
+            <span class="tool-tag">search_issues</span>
+            <span class="tool-tag">get_issue</span>
+            <span class="tool-tag">list_projects</span>
+          </div>
+        </div>
+
+        <div class="card mcp-github">
+          <div class="card-header">
+            <div class="card-icon">🐙</div>
+            <span class="card-name">GitHub</span>
+            <span class="card-badge">20+ tools</span>
+          </div>
+          <p class="card-desc">Review PRs, check CI status, manage repos, analyze security findings, and monitor Actions workflows from within the editor.</p>
+          <div class="card-tools">
+            <span class="tool-tag">pr_view</span>
+            <span class="tool-tag">issue_create</span>
+            <span class="tool-tag">actions</span>
+            <span class="tool-tag">code_search</span>
+          </div>
+        </div>
+
+        <div class="card mcp-grafana">
+          <div class="card-header">
+            <div class="card-icon">📊</div>
+            <span class="card-name">Grafana</span>
+            <span class="card-badge">dashboards</span>
+          </div>
+          <p class="card-desc">Query dashboards, check alerts, pull metrics from Prometheus or Loki. Essential when debugging production issues alongside code.</p>
+          <div class="card-tools">
+            <span class="tool-tag">dashboards</span>
+            <span class="tool-tag">alerts</span>
+            <span class="tool-tag">query</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">⚡</span> Custom Skills</h2>
+      <p class="section-desc">
+        Skills are reusable prompts that activate when you type specific phrases. Built using Anthropic's <a href="https://code.claude.com/docs/en/skills" target="_blank">SKILL.md architecture</a> with YAML frontmatter, argument handling, and allowed-tools configuration. Browse the <a href="https://github.com/riteshbhatia01/ritesh-ai-workflow/tree/main/skills" target="_blank">skill files</a> to use them yourself.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Skill</th>
+              <th>Command</th>
+              <th>Category</th>
+              <th>What it does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Compose Screen</strong></td>
+              <td><code>/compose-screen</code></td>
+              <td><span class="skill-category cat-android">Android</span></td>
+              <td>Scaffolds a new Compose screen with Circuit or ViewModel pattern, state, events, and preview</td>
+            </tr>
+            <tr>
+              <td><strong>Gradle Module</strong></td>
+              <td><code>/gradle-module</code></td>
+              <td><span class="skill-category cat-android">Android</span></td>
+              <td>Creates a new Gradle module with proper build config and placement in the module hierarchy</td>
+            </tr>
+            <tr>
+              <td><strong>Daily Standup</strong></td>
+              <td><code>/daily-standup</code></td>
+              <td><span class="skill-category cat-productivity">Productivity</span></td>
+              <td>Generates a standup update from recent git commits, open PRs, and current branch status</td>
+            </tr>
+            <tr>
+              <td><strong>Changelog</strong></td>
+              <td><code>/changelog</code></td>
+              <td><span class="skill-category cat-productivity">Productivity</span></td>
+              <td>Generates a structured changelog from commits between two git references with categorization</td>
+            </tr>
+            <tr>
+              <td><strong>CLAUDE.md Generator</strong></td>
+              <td><code>/claude-md-generator</code></td>
+              <td><span class="skill-category cat-ai">AI Workflow</span></td>
+              <td>Analyzes any project and generates a tailored CLAUDE.md configuration file</td>
+            </tr>
+            <tr>
+              <td><strong>MCP Setup</strong></td>
+              <td><code>/mcp-setup</code></td>
+              <td><span class="skill-category cat-ai">AI Workflow</span></td>
+              <td>Interactive guide to set up MCP servers for Claude Code or Cursor with verification steps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Coding Philosophy -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">🧠</span> AI Coding Philosophy</h2>
+      <p class="section-desc">
+        Principles I follow when working with AI as a coding partner.
+      </p>
+
+      <div class="philosophy-grid">
+        <div class="philosophy-item">
+          <h3>Convention over configuration</h3>
+          <p>The stricter your codebase patterns, the better AI output. Good architecture is a force multiplier for both humans and AI.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>AI augments, never replaces</h3>
+          <p>Use AI to catch mechanical stuff. Human judgment, context awareness, and team knowledge remain essential.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Ship early, iterate with feedback</h3>
+          <p>The real value of building AI tools isn't the tool itself. It's the conversations it starts with your team.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Turn repetitive prompts into skills</h3>
+          <p>If you're writing the same prompt twice, package it into a skill with the right context baked in.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Fakes over mocks, always</h3>
+          <p>AI-generated tests should follow your team's actual testing conventions. In our case: fakes only, no mocks.</p>
+        </div>
+        <div class="philosophy-item">
+          <h3>Connect your workflow, not just your code</h3>
+          <p>MCP servers let AI understand your full context: tickets, designs, dashboards, conversations. Not just the code.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Setup Guide -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">🚀</span> Getting Started</h2>
+      <p class="section-desc">
+        Want to set up a similar workflow? Here's how to get started with MCP servers in Claude Code and Cursor.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Setup</th>
+              <th>Docs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Claude Code</strong></td>
+              <td><code>claude mcp add &lt;server&gt;</code></td>
+              <td><a href="https://modelcontextprotocol.io/introduction" target="_blank">MCP Docs</a></td>
+            </tr>
+            <tr>
+              <td><strong>Cursor</strong></td>
+              <td>Settings → MCP → Add Server</td>
+              <td><a href="https://cursor.com/docs/context/mcp" target="_blank">Cursor MCP Docs</a></td>
+            </tr>
+            <tr>
+              <td><strong>MCP Registry</strong></td>
+              <td>Browse all available servers</td>
+              <td><a href="https://registry.modelcontextprotocol.io/" target="_blank">Registry</a></td>
+            </tr>
+            <tr>
+              <td><strong>GitHub MCP</strong></td>
+              <td>Official GitHub server</td>
+              <td><a href="https://github.com/github/github-mcp-server" target="_blank">Repo</a></td>
+            </tr>
+            <tr>
+              <td><strong>Grafana MCP</strong></td>
+              <td>Official Grafana server</td>
+              <td><a href="https://github.com/grafana/mcp-grafana" target="_blank">Repo</a></td>
+            </tr>
+            <tr>
+              <td><strong>Figma MCP</strong></td>
+              <td>Built into Figma Dev Mode</td>
+              <td><a href="https://developers.figma.com/docs/figma-mcp-server/" target="_blank">Blog</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Android Stack -->
+    <div class="section">
+      <h2 class="section-title"><span class="emoji">📱</span> Android Stack</h2>
+      <p class="section-desc">
+        The technologies I work with daily that shape how I use AI tools.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background: rgba(91,106,191,0.08);">🏗️</div>
+            <span class="card-name">Architecture</span>
+          </div>
+          <p class="card-desc">Circuit (UDF), Jetpack Compose, modular architecture with strict dependency hierarchy</p>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background: rgba(74,158,110,0.08);">🧪</div>
+            <span class="card-name">Testing</span>
+          </div>
+          <p class="card-desc">Fakes (never mocks), Turbine for Flows, Truth assertions, Roborazzi snapshots</p>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background: rgba(196,133,74,0.08);">🔧</div>
+            <span class="card-name">Tooling</span>
+          </div>
+          <p class="card-desc">Kotlin, Dagger, SQLDelight, Coroutines &amp; Flow, Gradle version catalogs</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="social-links">
+        <a href="https://github.com/riteshbhatia01" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/riteshbhatia01/" target="_blank">LinkedIn</a>
+      </div>
+      <p>Built with 🤖 and ☕ by Ritesh Bhatia</p>
+    </div>
+
+  </div>
+</body>
+</html>
