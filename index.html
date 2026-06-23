@@ -320,6 +320,7 @@
     .cat-android { background: rgba(74, 158, 110, 0.1); color: var(--green); }
     .cat-productivity { background: rgba(196, 133, 74, 0.1); color: var(--orange); }
     .cat-ai { background: rgba(91, 106, 191, 0.1); color: var(--accent); }
+    .cat-trading { background: rgba(184, 106, 138, 0.1); color: var(--pink); }
 
     /* Two-column layout */
     .two-col {
@@ -445,7 +446,7 @@
         <div class="stat-label">MCP Servers</div>
       </div>
       <div class="stat">
-        <div class="stat-value">6</div>
+        <div class="stat-value">7</div>
         <div class="stat-label">Custom Skills</div>
       </div>
       <div class="stat">
@@ -663,6 +664,12 @@
               <td><code>/mcp-setup</code></td>
               <td><span class="skill-category cat-ai">AI Workflow</span></td>
               <td>Interactive guide to set up MCP servers for Claude Code or Cursor with verification steps</td>
+            </tr>
+            <tr>
+              <td><strong>Equity Autopilot</strong></td>
+              <td><code>/equity-autopilot</code></td>
+              <td><span class="skill-category cat-trading">Trading</span></td>
+              <td>Stands up a hands-off, consensus-gated <strong>paper</strong>-trading bot: scans a stock universe, has multiple AI analysts vote, trades only on majority agreement under hard risk limits via Alpaca paper, and streams every action to Telegram. Dry-run by default.</td>
             </tr>
           </tbody>
         </table>

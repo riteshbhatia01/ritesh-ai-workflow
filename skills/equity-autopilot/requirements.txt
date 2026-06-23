@@ -1,0 +1,21 @@
+# equity-autopilot dependencies
+# Python 3.11+ required. Standard-library modules (asyncio, uuid, sqlite3,
+# dataclasses, collections, datetime, os) need no installation.
+
+# --- Market data & screening ---
+yfinance>=0.2.40
+pandas>=2.0
+pandas-market-calendars>=4.4      # trading-day / holiday awareness
+
+# --- Brokerage (paper) execution ---
+alpaca-py>=0.21                   # provides the `alpaca` import namespace
+
+# --- Scheduling ---
+APScheduler>=3.10
+pytz>=2024.1
+
+# --- Notifications ---
+python-telegram-bot>=21.0         # async Bot API
+
+# --- Config loading (optional, dev convenience) ---
+python-dotenv>=1.0
