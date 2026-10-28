@@ -6,10 +6,15 @@ My personal AI-assisted development setup for Android engineering — MCP server
 
 ## What's Inside
 
-- **5 MCP Servers** — Slack, Figma, Jira, GitHub, Grafana connected to Claude Code
-- **7 Custom Skills** — PR review, feature flag cleanup, test fake generation, and more
-- **AI Coding Philosophy** — Principles for working with AI as a daily coding partner
-- **Getting Started Guide** — How to set up MCP servers with Claude Code and Cursor
+- **13+ Years of Android** — Career timeline (Slack, Scotiabank, Tacit Innovations, CIS, Sofmen, Mindtree) and expertise
+- **Autonomous, Human-in-the-Flow** — Interactive walkthrough of how a ticket becomes a shipped change, with three human gates
+- **Claude Toolkit** — Skills, plugins, plan mode, worktrees, subagents, hooks, /code-review, /loop, Chrome, memory, MCP
+- **Projects** — Salesforce in Slack, Compose/Circuit adoption, cheque capture, kiosks, and more
+- **Values & Philosophy** — Each value paired with where it showed up in the work
+- **Open Problems + Field Notes** — PR review bottleneck, agents that can't see the screen, Gradle speed, context drift, Claude vs Codex on mobile
+- **5 MCP Servers** and **7 Custom Skills**
+
+Connect: [linkedin.com/in/riteshbhatia01](https://www.linkedin.com/in/riteshbhatia01/)
 
 ## MCP Servers
 
